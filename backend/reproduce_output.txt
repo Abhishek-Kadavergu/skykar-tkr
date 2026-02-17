@@ -1,0 +1,16 @@
+Connected to MongoDB
+Test user preference saved (with category="Shoes", NOT interests).
+Generating recommendations...
+
+--- REPRODUCTION RESULTS ---
+#1: Nike Air Max 270 (Shoes) - Score: 199
+#2: Nike Revolution 6 (Shoes) - Score: 198.6
+#3: Adidas Ultraboost 22 (Shoes) - Score: 149.4
+#4: New Balance 990v5 (Shoes) - Score: 149.2
+#5: Asics Noosa Tri 14 (Shoes) - Score: 149
+#6: Adidas Stan Smith (Shoes) - Score: 148.8
+#7: New Balance Fresh Foam More (Shoes) - Score: 148.8
+#8: Puma Future Rider (Shoes) - Score: 148.6
+#9: Puma RS-X3 (Shoes) - Score: 148.4
+#10: Asics Gel-Kayano 29 (Shoes) - Score: 129.2
+PASSED: Only "Shoes" recommended.

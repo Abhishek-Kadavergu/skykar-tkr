@@ -35,8 +35,8 @@ router.post('/', async (req, res) => {
  * TODO: Replace with actual LLM integration (OpenAI, Anthropic, etc.)
  */
 function generateExplanation(preferences, product) {
-  const { budget, brandPreference, featurePreference, interests } = preferences;
-  
+  const { budget, brandPreference, featurePreference, interests = [] } = preferences;
+
   const reasons = [];
 
   // Price match reason
@@ -50,17 +50,20 @@ function generateExplanation(preferences, product) {
   }
 
   // Brand match reason
-  if (brandPreference && brandPreference !== 'Any' && product.brand.toLowerCase() === brandPreference.toLowerCase()) {
-    reasons.push(`it's from ${product.brand}, your preferred brand`);
+  const productBrand = product.brand || 'Unknown Brand';
+  const productCategory = product.category || 'Unknown Category';
+
+  if (brandPreference && brandPreference !== 'Any' && productBrand.toLowerCase() === brandPreference.toLowerCase()) {
+    reasons.push(`it's from ${productBrand}, your preferred brand`);
   } else {
-    reasons.push(`${product.brand} is known for quality in the ${product.category.toLowerCase()} category`);
+    reasons.push(`${productBrand} is known for quality in the ${productCategory.toLowerCase()} category`);
   }
 
   // Feature match reason
   if (product.featureType === featurePreference) {
     reasons.push(`it excels in ${featurePreference} (${product.featureScore}/10 score), which is your top priority`);
   } else {
-    reasons.push(`it offers strong ${product.featureType} features (${product.featureScore}/10 score)`);
+    reasons.push(`it offers strong ${product.featureType || 'features'} features (${product.featureScore || 0}/10 score)`);
   }
 
   // Rating reason

@@ -1,0 +1,17 @@
+Connected to MongoDB
+Test user preference saved.
+Generating recommendations...
+
+--- VERIFICATION RESULTS ---
+#1: Titan Smart Watch Pro (Watches) - Score: 229.2
+#2: Titan Fitness Pro (Watches) - Score: 199.2
+#3: Titan Raga Classic (Watches) - Score: 199
+#4: Fossil Gen 6 Smartwatch (Watches) - Score: 179
+#5: Casio G-Shock (Watches) - Score: 149.4
+#6: Fossil Sport Smartwatch (Watches) - Score: 149
+#7: Casio A1000 Vintage (Watches) - Score: 148.8
+#8: Fossil Carlie Watch (Watches) - Score: 148.6
+#9: Apple Watch Series 9 (Watches) - Score: 139.6
+#10: Samsung Galaxy Watch 6 (Watches) - Score: 139.4
+PASSED: All recommendations are strictly Matches.
+PASSED: Found Titan brand in recommendations.

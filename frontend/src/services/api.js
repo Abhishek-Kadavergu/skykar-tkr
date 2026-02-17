@@ -30,6 +30,56 @@ export const getExplanation = async (preferences, product) => {
   }
 };
 
+export const saveUserPreferences = async (userData) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/user-preferences`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to save preferences");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error saving user preferences:", error);
+    throw error;
+  }
+};
+
+export const getRecommendations = async (userId) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/recommendations/${userId}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch recommendations');
+    }
+    const data = await response.json();
+
+    // Transform backend data to match frontend component expectations
+    return data.recommendations.map(rec => ({
+      ...rec.product, // Flatten product details
+      matchScore: rec.matchScore > 100 ? 100 : rec.matchScore, // Cap at 100 for % display
+      matchReasons: rec.matchReasons,
+      // Add breakdown to prevent UI crash (mock values or derived)
+      breakdown: {
+        priceScore: rec.matchReasons.includes('Fits within budget') ? 100 : 50,
+        featureScore: rec.matchReasons.some(r => r.includes('Matched feature')) ? 100 : 50,
+        brandScore: rec.matchReasons.some(r => r.includes('Preferred brand')) ? 100 : 50,
+        ratingScore: Math.round((rec.product.rating / 5) * 100)
+      }
+    }));
+  } catch (error) {
+    console.error("Error fetching recommendations:", error);
+    throw error;
+  }
+};
+
 export default {
-  getExplanation
+  getExplanation,
+  saveUserPreferences,
+  getRecommendations
 };
