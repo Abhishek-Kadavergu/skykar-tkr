@@ -57,8 +57,8 @@ function FloatingChatButton({ user }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleSendMessage = async (message, location = null) => {
-    const response = await sendChatMessage(user.uid, message, location);
+  const handleSendMessage = async (message, location = null, detectedLanguage = null) => {
+    const response = await sendChatMessage(user.uid, message, location, detectedLanguage);
     return response;
   };
 

@@ -48,7 +48,7 @@ export const generateRecommendations = async (userId, location = null) => {
 };
 
 // ==================== AI CHAT ====================
-export const sendChatMessage = async (userId, message, location = null) => {
+export const sendChatMessage = async (userId, message, location = null, detectedLanguage = null) => {
   try {
     const response = await fetch(`${API_URL}/ai/chat`, {
       method: 'POST',
@@ -57,7 +57,8 @@ export const sendChatMessage = async (userId, message, location = null) => {
         userId,
         message: `[Current Date: ${new Date().toLocaleString()}] ${message}`,
         location,
-        clientDate: new Date().toString() // Send strictly current client date
+        clientDate: new Date().toString(),
+        detectedLanguage,  // so AI responds in the user's spoken language
       }),
     });
     return await response.json();

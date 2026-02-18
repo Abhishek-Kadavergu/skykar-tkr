@@ -8,7 +8,7 @@ import products from '../data/products.js';
  */
 export const chat = async (req, res) => {
     try {
-        const { userId, message, location, clientDate } = req.body;
+        const { userId, message, location, clientDate, detectedLanguage } = req.body;
 
         if (!userId || !message) {
             return res.status(400).json({ message: 'User ID and message are required' });
@@ -90,7 +90,7 @@ export const chat = async (req, res) => {
 
                 if (recommendations.length === 0) {
                     // If no results, let AI handle it
-                    const result = await geminiService.chat(userId, message, context);
+                    const result = await geminiService.chat(userId, message, context, detectedLanguage);
                     return res.status(200).json(result);
                 }
 
@@ -120,7 +120,7 @@ ${formattedList}
 
 Please present these restaurants in a friendly, conversational way. Keep the formatting clean with the restaurant names, ratings, and addresses. Add helpful context based on the user's preferences (budget: ₹${context.preferences[0]?.budget || 2000}). Be specific and use the actual restaurant names and details provided.`;
 
-                const result = await geminiService.chat(userId, enhancedMessage, context);
+                const result = await geminiService.chat(userId, enhancedMessage, context, detectedLanguage);
 
                 // Attach full recommendations to response
                 result.recommendations = topRestaurants;
@@ -137,7 +137,7 @@ Please present these restaurants in a friendly, conversational way. Keep the for
         }
 
         // For non-restaurant queries or when no location, use standard AI chat
-        const result = await geminiService.chat(userId, message, context);
+        const result = await geminiService.chat(userId, message, context, detectedLanguage);
 
         res.status(200).json(result);
     } catch (error) {

@@ -94,7 +94,7 @@ Write a friendly, concise 2-3 sentence explanation of why this product matches t
     /**
      * Start or continue a conversation with FULL user context
      */
-    async chat(userId, userMessage, context = {}) {
+    async chat(userId, userMessage, context = {}, detectedLanguage = null) {
         if (!this.isAvailable()) {
             return {
                 response: "I'm sorry, but the AI assistant is currently unavailable. Please make sure the Gemini API key is configured.",
@@ -119,8 +119,19 @@ Write a friendly, concise 2-3 sentence explanation of why this product matches t
                 ? `📍 User Location: ${context.location.address || `Lat ${context.location.lat}, Lng ${context.location.lng}`}`
                 : '📍 Location: Not available (user needs to enable)';
 
+            const LANGUAGE_NAMES = {
+                hi: 'Hindi', ta: 'Tamil', te: 'Telugu', kn: 'Kannada',
+                ml: 'Malayalam', bn: 'Bengali', mr: 'Marathi', gu: 'Gujarati',
+                or: 'Odia', pa: 'Punjabi', en: 'English'
+            };
+            const langName = detectedLanguage ? (LANGUAGE_NAMES[detectedLanguage] || detectedLanguage) : null;
+            const languageInstruction = langName && detectedLanguage !== 'en'
+                ? `🌐 LANGUAGE: The user spoke in ${langName}. You MUST respond entirely in ${langName}. Do not switch to English.\n`
+                : '';
+
             const systemContext = `You are **AalayaX AI Assistant** - ${context.userName}'s personal shopping and recommendation assistant.
 📅 Current Date: ${context.currentDate}
+${languageInstruction}
 
 🎯 CRITICAL: You have FULL ACCESS to user's profile data. Never ask for information you already have!
 

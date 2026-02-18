@@ -8,6 +8,7 @@ import userPreferenceRouter from "./routes/userPreferenceRoutes.js";
 import recommendationRouter from './routes/recommendationRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import aiRouter from './routes/aiRoutes.js';
+import voiceRouter from './routes/voiceRoutes.js';
 
 dotenv.config();
 
@@ -30,7 +31,7 @@ app.use("/api/user-preferences", userPreferenceRouter);
 app.use("/api/recommendations", recommendationRouter);
 app.use("/api/user", userRouter);
 app.use("/api/ai", aiRouter);
-
+app.use("/api/voice", voiceRouter);
 
 // Health check
 app.get("/api/health", (req, res) => {
