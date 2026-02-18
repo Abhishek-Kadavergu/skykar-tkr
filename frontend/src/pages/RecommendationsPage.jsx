@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import PreferenceForm from "../components/PreferenceForm";
 import RecommendationList from "../components/RecommendationList";
 import { saveUserPreferences, getRecommendations } from "../services/api";
+import { useGeolocation } from "../utils/useGeolocation";
 import products from "../data/products";
+import { getRecommendations as getLocalRecommendations } from "../utils/recommendationEngine";
 
 function RecommendationsPage({ user }) {
   const navigate = useNavigate();
@@ -11,36 +13,55 @@ function RecommendationsPage({ user }) {
   const [userPreferences, setUserPreferences] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [saving, setSaving] = useState(false);
+  
+  // Get user's location for restaurant and location-based recommendations
+  const { location, error: locationError, loading: locationLoading } = useGeolocation();
 
   const handlePreferencesSubmit = async (userData) => {
     setSaving(true);
     setUserPreferences(userData);
 
     try {
-      // Save preferences to Backend
+      let recs = [];
+
+      // Try backend first
       if (user) {
-        console.log("Saving preferences to Backend for user:", user.uid);
-        const payload = {
-          ...userData,
-          uid: user.uid
-        };
-        await saveUserPreferences(payload);
-        console.log("Preferences saved successfully to backend");
+        try {
+          console.log("Saving preferences to Backend for user:", user.uid);
+          const payload = { ...userData, uid: user.uid };
+          await saveUserPreferences(payload);
+          console.log("Preferences saved successfully to backend");
+
+          console.log("Fetching recommendations from Backend...");
+          if (location) {
+            console.log("Using location:", location.lat, location.lng);
+          }
+          recs = await getRecommendations(user.uid, location);
+          console.log("Fetched recommendations from backend:", recs.length);
+        } catch (backendError) {
+          console.warn("Backend error, falling back to local engine:", backendError.message);
+        }
       }
 
-      // Fetch recommendations from Backend
-      console.log("Fetching recommendations from Backend...");
-      const recs = await getRecommendations(user.uid);
-      setRecommendations(recs);
-      console.log("Fetched recommendations:", recs.length);
+      // Fallback to local recommendation engine if backend returned 0
+      if (recs.length === 0) {
+        console.log("Using local recommendation engine as fallback...");
+        recs = getLocalRecommendations(userData, products);
+        console.log("Local recommendations generated:", recs.length);
+      }
 
+      setRecommendations(recs);
       setShowPreferences(false);
     } catch (error) {
       console.error("Error in handlePreferencesSubmit:", error);
-      // If backend fails, we could fallback, but for now clearer to show empty or error
-      // setRecommendations([]); 
-      // setShowPreferences(false);
-      alert("Failed to generate recommendations. Please try again.");
+      // Final fallback: local engine only
+      try {
+        const localRecs = getLocalRecommendations(userData, products);
+        setRecommendations(localRecs);
+        setShowPreferences(false);
+      } catch (e) {
+        alert("Failed to generate recommendations. Please try again.");
+      }
     } finally {
       setSaving(false);
     }

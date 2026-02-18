@@ -6,7 +6,9 @@ import {
   FaClock,
   FaVial,
   FaTv,
-  FaDollarSign,
+  FaUtensils,
+  FaFilm,
+  FaRupeeSign,
   FaStar,
   FaPlus,
   FaTrash,
@@ -14,16 +16,30 @@ import {
 } from "react-icons/fa";
 
 const CATEGORIES = [
+  { value: "Restaurant", label: "Restaurants & Food", icon: FaUtensils },
+  { value: "Movie", label: "Movies & TV Shows", icon: FaFilm },
+  { value: "Music", label: "Music Albums", icon: FaMusic },
   { value: "Shoes", label: "Shoes", icon: FaShoppingBag },
   { value: "Tech", label: "Tech (Mobiles & Laptops)", icon: FaLaptop },
-  { value: "Music", label: "Music", icon: FaMusic },
   { value: "Watches", label: "Watches", icon: FaClock },
   { value: "Perfumes", label: "Perfumes", icon: FaVial },
-  { value: "TV", label: "TV", icon: FaTv },
+  { value: "TV", label: "TV Devices", icon: FaTv },
 ];
 
 // Category-specific brands and features
 const CATEGORY_DATA = {
+  Restaurant: {
+    brands: ["Italian", "Chinese", "Indian", "Mexican", "Japanese", "American"],
+    features: ["Fine Dining", "Casual", "Fast Food", "Cafe", "Buffet", "Street Food"],
+  },
+  Movie: {
+    brands: ["Netflix", "Prime Video", "Disney+", "Apple TV+", "HBO Max"],
+    features: ["Action", "Comedy", "Drama", "Sci-Fi", "Horror", "Romance", "Thriller", "Animation"],
+  },
+  Music: {
+    brands: ["Bollywood", "EDM", "LoFi", "HipHop", "Classical"],
+    features: ["Romantic", "Party", "Focus", "Energetic", "Relaxing"],
+  },
   Shoes: {
     brands: ["Nike", "Adidas", "Puma", "Asics", "New Balance"],
     features: ["Comfort", "Running", "Style", "Sports", "Casual"],
@@ -39,10 +55,6 @@ const CATEGORY_DATA = {
       "Display",
     ],
   },
-  Music: {
-    brands: ["Bollywood", "EDM", "LoFi", "HipHop", "Classical"],
-    features: ["Romantic", "Party", "Focus", "Energetic", "Relaxing"],
-  },
   Watches: {
     brands: ["Titan", "Fossil", "Casio", "Apple", "Samsung"],
     features: ["Smart", "Luxury", "Sport", "Casual", "Fitness"],
@@ -55,6 +67,20 @@ const CATEGORY_DATA = {
     brands: ["Sony", "Samsung", "LG", "Mi", "OnePlus"],
     features: ["4K", "OLED", "QLED", "Smart", "Android"],
   },
+};
+
+// Categories that don't need budget
+const CATEGORIES_WITHOUT_BUDGET = ["Movie"];
+
+// Default budget by category (in Indian Rupees)
+const DEFAULT_BUDGETS = {
+  Restaurant: 1000,
+  Music: 500,
+  Shoes: 8000,
+  Tech: 50000,
+  Watches: 15000,
+  Perfumes: 5000,
+  TV: 50000,
 };
 
 function PreferenceForm({ onSubmit, user }) {
@@ -75,13 +101,27 @@ function PreferenceForm({ onSubmit, user }) {
     ]);
   };
 
+  const needsBudget = (category) => {
+    return !CATEGORIES_WITHOUT_BUDGET.includes(category);
+  };
+
   const removePreference = (id) => {
     setPreferences(preferences.filter((p) => p.id !== id));
   };
 
   const updatePreference = (id, field, value) => {
     setPreferences(
-      preferences.map((p) => (p.id === id ? { ...p, [field]: value } : p)),
+      preferences.map((p) => {
+        if (p.id === id) {
+          const updated = { ...p, [field]: value };
+          // Set default budget when category changes
+          if (field === "category" && value && DEFAULT_BUDGETS[value]) {
+            updated.budget = DEFAULT_BUDGETS[value];
+          }
+          return updated;
+        }
+        return p;
+      }),
     );
   };
 
@@ -141,14 +181,14 @@ function PreferenceForm({ onSubmit, user }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-6">
+    <div className="min-h-screen bg-gray-50 dark:bg-black py-12 px-6 transition-colors duration-200">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-gray-200 dark:border-slate-800 p-8 transition-colors duration-200">
           <div className="mb-8">
-            <h2 className="text-3xl font-bold text-slate-900 mb-2">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
               Tell Us Your Preferences
             </h2>
-            <p className="text-slate-600">
+            <p className="text-slate-600 dark:text-slate-400">
               Add multiple product preferences to get personalized
               recommendations
             </p>
@@ -158,12 +198,12 @@ function PreferenceForm({ onSubmit, user }) {
             {/* Preferences List */}
             <div className="space-y-6">
               {preferences.length === 0 ? (
-                <div className="text-center py-12 border-2 border-dashed border-gray-300 rounded-lg">
-                  <p className="text-gray-500 mb-4">No preferences added yet</p>
+                <div className="text-center py-12 border-2 border-dashed border-gray-300 dark:border-slate-700 rounded-lg transition-colors duration-200">
+                  <p className="text-gray-500 dark:text-slate-400 mb-4">No preferences added yet</p>
                   <button
                     type="button"
                     onClick={addPreference}
-                    className="inline-flex items-center gap-2 px-6 py-2 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-2 bg-slate-800 dark:bg-slate-700 text-white rounded-lg hover:bg-slate-900 dark:hover:bg-slate-600 transition-all"
                   >
                     <FaPlus /> Add First Preference
                   </button>
@@ -173,17 +213,17 @@ function PreferenceForm({ onSubmit, user }) {
                   {preferences.map((pref, index) => (
                     <div
                       key={pref.id}
-                      className="border border-gray-200 rounded-lg p-6 space-y-6 relative"
+                      className="border border-gray-200 dark:border-slate-700 rounded-lg p-6 space-y-6 relative transition-colors duration-200"
                     >
                       {/* Header with Remove Button */}
                       <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-lg font-semibold text-gray-800">
+                        <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
                           Preference {index + 1}
                         </h3>
                         <button
                           type="button"
                           onClick={() => removePreference(pref.id)}
-                          className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-all"
+                          className="p-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all"
                           title="Remove preference"
                         >
                           <FaTrash />
@@ -204,7 +244,7 @@ function PreferenceForm({ onSubmit, user }) {
                               e.target.value,
                             )
                           }
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent outline-none"
+                          className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent outline-none bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors duration-200"
                           required
                         >
                           <option value="">Select a category</option>
@@ -219,7 +259,7 @@ function PreferenceForm({ onSubmit, user }) {
                       {/* Brand Selection */}
                       {pref.category && (
                         <div>
-                          <label className="block text-sm font-semibold text-gray-800 mb-3">
+                          <label className="block text-sm font-semibold text-gray-800 dark:text-slate-200 mb-3">
                             Preferred Brands (Select one or more)
                           </label>
                           <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
@@ -229,11 +269,10 @@ function PreferenceForm({ onSubmit, user }) {
                                   key={brand}
                                   type="button"
                                   onClick={() => toggleBrand(pref.id, brand)}
-                                  className={`px-4 py-2 rounded-lg border-2 transition-all text-sm font-medium ${
-                                    pref.brands.includes(brand)
-                                      ? "border-slate-800 bg-slate-50 text-slate-900"
-                                      : "border-gray-300 hover:border-gray-400 text-gray-700"
-                                  }`}
+                                  className={`px-4 py-2 rounded-lg border-2 transition-all text-sm font-medium ${pref.brands.includes(brand)
+                                    ? "border-slate-800 bg-slate-50 text-slate-900 dark:border-slate-400 dark:bg-slate-700 dark:text-white"
+                                    : "border-gray-300 hover:border-gray-400 text-gray-700 dark:border-slate-600 dark:text-slate-300 dark:hover:border-slate-500"
+                                    }`}
                                 >
                                   {brand}
                                 </button>
@@ -245,13 +284,13 @@ function PreferenceForm({ onSubmit, user }) {
                               {pref.brands.map((brand) => (
                                 <span
                                   key={brand}
-                                  className="inline-flex items-center gap-1 px-3 py-1 bg-slate-100 text-slate-900 rounded-full text-sm"
+                                  className="inline-flex items-center gap-1 px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-white rounded-full text-sm transition-colors duration-200"
                                 >
                                   {brand}
                                   <button
                                     type="button"
                                     onClick={() => toggleBrand(pref.id, brand)}
-                                    className="hover:text-slate-700"
+                                    className="hover:text-slate-700 dark:hover:text-slate-300"
                                   >
                                     <FaTimes size={12} />
                                   </button>
@@ -262,37 +301,39 @@ function PreferenceForm({ onSubmit, user }) {
                         </div>
                       )}
 
-                      {/* Budget */}
-                      <div>
-                        <label className="block text-sm font-semibold text-gray-800 mb-3">
-                          <FaDollarSign className="inline mr-1" />
-                          Budget: ₹{pref.budget}
-                        </label>
-                        <input
-                          type="range"
-                          min="500"
-                          max="100000"
-                          step="500"
-                          value={pref.budget}
-                          onChange={(e) =>
-                            updatePreference(
-                              pref.id,
-                              "budget",
-                              Number(e.target.value),
-                            )
-                          }
-                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-slate-800"
-                        />
-                        <div className="flex justify-between text-xs text-gray-500 mt-2">
-                          <span>₹500</span>
-                          <span>₹100,000</span>
+                      {/* Budget - Only show for categories that need it */}
+                      {pref.category && needsBudget(pref.category) && (
+                        <div>
+                          <label className="block text-sm font-semibold text-gray-800 dark:text-slate-200 mb-3">
+                            <FaRupeeSign className="inline mr-1" />
+                            Budget (Indian Rupees): ₹{pref.budget.toLocaleString('en-IN')}
+                          </label>
+                          <input
+                            type="range"
+                            min="500"
+                            max="100000"
+                            step="500"
+                            value={pref.budget}
+                            onChange={(e) =>
+                              updatePreference(
+                                pref.id,
+                                "budget",
+                                Number(e.target.value),
+                              )
+                            }
+                            className="w-full h-2 bg-gray-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-slate-800 dark:accent-slate-400"
+                          />
+                          <div className="flex justify-between text-xs text-gray-500 dark:text-slate-400 mt-2">
+                            <span>₹500</span>
+                            <span>₹1,00,000</span>
+                          </div>
                         </div>
-                      </div>
+                      )}
 
                       {/* Feature Preference */}
                       {pref.category && (
                         <div>
-                          <label className="block text-sm font-semibold text-gray-800 mb-3">
+                          <label className="block text-sm font-semibold text-gray-800 dark:text-slate-200 mb-3">
                             <FaStar className="inline mr-1" />
                             What feature matters most? *
                           </label>
@@ -305,7 +346,7 @@ function PreferenceForm({ onSubmit, user }) {
                                 e.target.value,
                               )
                             }
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent outline-none"
+                            className="w-full px-4 py-3 border border-gray-300 dark:border-slate-600 rounded-lg focus:ring-2 focus:ring-slate-500 focus:border-transparent outline-none bg-white dark:bg-slate-800 text-slate-900 dark:text-white transition-colors duration-200"
                             required
                           >
                             <option value="">Select a feature</option>
@@ -321,9 +362,9 @@ function PreferenceForm({ onSubmit, user }) {
                       )}
 
                       {/* Rating & Budget Importance */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className={`grid grid-cols-1 ${pref.category && needsBudget(pref.category) ? 'md:grid-cols-2' : ''} gap-4`}>
                         <div>
-                          <label className="block text-sm font-semibold text-gray-800 mb-3">
+                          <label className="block text-sm font-semibold text-gray-800 dark:text-slate-200 mb-3">
                             Rating Importance (1-5)
                           </label>
                           <div className="flex gap-2 items-center">
@@ -339,7 +380,7 @@ function PreferenceForm({ onSubmit, user }) {
                                   Number(e.target.value),
                                 )
                               }
-                              className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-slate-800"
+                              className="flex-1 h-2 bg-gray-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-slate-800 dark:accent-slate-400"
                             />
                             <span className="text-lg font-bold text-slate-900 min-w-8">
                               {pref.ratingImportance}
@@ -350,33 +391,35 @@ function PreferenceForm({ onSubmit, user }) {
                           </p>
                         </div>
 
-                        <div>
-                          <label className="block text-sm font-semibold text-gray-800 mb-3">
-                            Budget Importance (1-5)
-                          </label>
-                          <div className="flex gap-2 items-center">
-                            <input
-                              type="range"
-                              min="1"
-                              max="5"
-                              value={pref.budgetImportance}
-                              onChange={(e) =>
-                                updatePreference(
-                                  pref.id,
-                                  "budgetImportance",
-                                  Number(e.target.value),
-                                )
-                              }
-                              className="flex-1 h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-slate-800"
-                            />
-                            <span className="text-lg font-bold text-slate-900 min-w-8">
-                              {pref.budgetImportance}
-                            </span>
+                        {pref.category && needsBudget(pref.category) && (
+                          <div>
+                            <label className="block text-sm font-semibold text-gray-800 dark:text-slate-200 mb-3">
+                              Budget Importance (1-5)
+                            </label>
+                            <div className="flex gap-2 items-center">
+                              <input
+                                type="range"
+                                min="1"
+                                max="5"
+                                value={pref.budgetImportance}
+                                onChange={(e) =>
+                                  updatePreference(
+                                    pref.id,
+                                    "budgetImportance",
+                                    Number(e.target.value),
+                                  )
+                                }
+                                className="flex-1 h-2 bg-gray-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-slate-800 dark:accent-slate-400"
+                              />
+                              <span className="text-lg font-bold text-slate-900 dark:text-white min-w-8">
+                                {pref.budgetImportance}
+                              </span>
+                            </div>
+                            <p className="text-xs text-gray-500 dark:text-slate-400 mt-1">
+                              How strictly should we follow your budget?
+                            </p>
                           </div>
-                          <p className="text-xs text-gray-500 mt-1">
-                            How strictly should we follow your budget?
-                          </p>
-                        </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -389,7 +432,7 @@ function PreferenceForm({ onSubmit, user }) {
               <button
                 type="button"
                 onClick={addPreference}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 border-2 border-dashed border-slate-300 text-slate-700 rounded-lg hover:border-slate-400 hover:bg-slate-50 transition-all font-medium"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 border-2 border-dashed border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 rounded-lg hover:border-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all font-medium"
               >
                 <FaPlus /> Add Another Preference
               </button>
@@ -398,7 +441,7 @@ function PreferenceForm({ onSubmit, user }) {
             <button
               type="submit"
               disabled={preferences.length === 0}
-              className="w-full bg-slate-800 text-white font-semibold py-4 rounded-md hover:bg-slate-900 transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-slate-800 dark:bg-slate-700 text-white font-semibold py-4 rounded-md hover:bg-slate-900 dark:hover:bg-slate-600 transition-all shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Get Personalized Recommendations
             </button>

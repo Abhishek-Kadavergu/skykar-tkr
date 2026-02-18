@@ -1,15 +1,36 @@
 # AalayaX - AI Virtual Assistance & User Experience Engine
 
-A hackathon prototype web application that provides personalized product recommendations using a local recommendation engine.
+**Complete AI-Powered Shopping Assistant** with conversational AI, voice search, and intelligent product recommendations.
 
-## Features
+## ✨ Features
 
-- **Firebase Authentication**: Google OAuth and Email/Password login
-- **Preference-Based Recommendations**: Users select interests, budget, brand, and feature preferences
-- **Local Recommendation Engine**: Runs entirely in frontend using a local dataset
-- **Resilient Design**: Works even if Firebase or backend fails
-- **Optional LLM Explanations**: Backend can generate explanations for recommendations
-- **Modern UI**: Clean design with Tailwind CSS and gradient backgrounds
+### 🤖 AI Virtual Assistant (NEW!)
+- **Conversational AI**: Chat with Gemini 2.0 Flash for personalized recommendations
+- **Voice Search**: Speak naturally to search for products
+- **Natural Language Processing**: "Find Nike shoes under 5000" → instant results
+- **Context-Aware Responses**: AI remembers your preferences and conversation history
+- **Multi-turn Conversations**: Deep, meaningful interactions with AI
+
+### 🎯 Smart Recommendations
+- **Preference-Based Engine**: Budget, brands, features, ratings
+- **Multiple Categories**: Tech, Shoes, Fashion, Home
+- **Real-time Scoring**: Intelligent product matching algorithm
+- **AI Explanations**: Gemini AI explains why products match your needs
+
+### 👤 User Features
+- **Firebase Authentication**: Google OAuth & Email/Password
+- **Favorites System**: Save products you love
+- **Activity Tracking**: View history, searches, and stats
+- **Real-time Stats**: Dashboard with personalized analytics
+- **Profile Management**: Update preferences anytime
+
+### 🎨 Modern UI/UX
+- **Navigation Tour**: Interactive onboarding guide for new users
+- **Floating Chat Bot**: AI accessible from any page
+- **Responsive Design**: Works on all devices
+- **Clean Interface**: Tailwind CSS with smooth animations
+- **Voice Input**: Microphone button for hands-free interaction
+- **Tour Restart**: Help button to replay the guided tour anytime
 
 ## Tech Stack
 
@@ -18,36 +39,71 @@ A hackathon prototype web application that provides personalized product recomme
 - Tailwind CSS for styling
 - React Icons
 - Firebase SDK (Auth + Firestore)
+- Web Speech API for voice input
 
 ### Backend
 - Node.js + Express
-- Mock explanation endpoint (ready for LLM integration)
+- Firebase Admin SDK
+- Gemini 2.0 Flash API (Google AI)
+- RESTful API architecture
 
 ### Database
-- Firebase Firestore (for user preferences and history)
-- Local product dataset (26 items across 4 categories)
+- Firebase Firestore
+  - User profiles & preferences
+  - Recommendation history
+  - Favorites & activity tracking
+  - Real-time synchronization
 
 ## Project Structure
 
 ```
 AalayaX/
+├── backend/
+│   ├── config/
+│   │   └── firebase.js               # Firebase Admin setup
+│   ├── controllers/
+│   │   ├── aiController.js           # AI chat & search
+│   │   ├── recommendationController.js
+│   │   ├── userController.js         # Favorites, stats, tracking
+│   │   └── userPreferenceController.js
+│   ├── services/
+│   │   ├── firestoreService.js       # Database operations
+│   │   └── geminiService.js          # Gemini AI integration
+│   ├── routes/
+│   │   ├── aiRoutes.js               # AI endpoints
+│   │   ├── userRoutes.js             # User endpoints
+│   │   ├── recommendationRoutes.js
+│   │   └── explain.js                # AI explanations
+│   ├── server.js
+│   ├── .env
+│   └── serviceAccountKey.json        # Firebase credentials (gitignored)
+│
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── Login.jsx
+│   │   │   ├── ChatBot.jsx           # AI chat interface
+│   │   │   ├── FloatingChatButton.jsx
+│   │   │   ├── NavigationTour.jsx    # Interactive guided tour
+│   │   │   ├── TourTrigger.jsx       # Tour restart button
+│   │   │   ├── Navbar.jsx
 │   │   │   ├── PreferenceForm.jsx
-│   │   │   ├── RecommendationList.jsx
-│   │   │   └── ProductCard.jsx
-│   │   ├── data/
-│   │   │   └── products.js
-│   │   ├── utils/
-│   │   │   └── recommendationEngine.js
+│   │   │   └── RecommendationList.jsx
+│   │   ├── pages/
+│   │   │   ├── AIAssistantPage.jsx   # AI features page
+│   │   │   ├── HomePage.jsx          # Real-time stats
+│   │   │   ├── RecommendationsPage.jsx
+│   │   │   ├── HistoryPage.jsx
+│   │   │   └── ProfilePage.jsx
 │   │   ├── services/
-│   │   │   ├── firebase.js
-│   │   │   └── api.js
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
+│   │   │   ├── api.js                # Complete API integration
+│   │   │   └── firebase.js
+│   │   └── App.jsx
+│   ├── .env
+│   └── package.json
+│
+├── FIREBASE_SETUP.md                 # Complete setup guide
+└── README.md
+```
 │   ├── package.json
 │   └── vite.config.js
 │

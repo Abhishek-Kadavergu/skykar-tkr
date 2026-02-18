@@ -1,16 +1,12 @@
 import express from 'express';
+import geminiService from '../services/geminiService.js';
 
 const router = express.Router();
 
 /**
  * POST /api/explain
- * Generate explanation for why a product matches user preferences
- * 
- * Input: { preferences, product }
- * Output: { explanation: string }
- * 
- * Note: This currently returns mock explanations.
- * In production, you can integrate with OpenAI, Anthropic, or other LLM providers.
+ * Generate AI explanation for why a product matches user preferences
+ * Now uses real Gemini AI instead of mock data
  */
 router.post('/', async (req, res) => {
   try {
@@ -20,61 +16,76 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'Missing preferences or product data' });
     }
 
-    // Generate mock explanation based on preferences and product
-    const explanation = generateExplanation(preferences, product);
+    // Check if Gemini is available
+    if (!geminiService.isAvailable()) {
+      // Fallback to mock explanation
+      const explanation = generateMockExplanation(preferences, product);
+      return res.json({ 
+        explanation,
+        isAI: false,
+        message: 'Using fallback explanation. Configure GEMINI_API_KEY for AI-powered explanations.'
+      });
+    }
 
-    res.json({ explanation });
+    // Generate AI explanation
+    const explanation = await geminiService.explainRecommendation(product, preferences);
+
+    res.json({ 
+      explanation,
+      isAI: true
+    });
   } catch (error) {
     console.error('Error generating explanation:', error);
-    res.status(500).json({ error: 'Failed to generate explanation' });
+    
+    // Fallback to mock explanation on error
+    const explanation = generateMockExplanation(req.body.preferences, req.body.product);
+    res.json({ 
+      explanation,
+      isAI: false,
+      message: 'AI service error. Using fallback explanation.'
+    });
   }
 });
 
 /**
- * Generate a mock explanation
- * TODO: Replace with actual LLM integration (OpenAI, Anthropic, etc.)
+ * Fallback mock explanation (used when Gemini is unavailable)
  */
-function generateExplanation(preferences, product) {
-  const { budget, brandPreference, featurePreference, interests = [] } = preferences;
+function generateMockExplanation(preferences, product) {
+  const { budget, brands = [], featurePreference, category } = preferences;
 
   const reasons = [];
 
-  // Price match reason
+  // Category match
+  if (product.category === category) {
+    reasons.push(`matches your interest in ${category}`);
+  }
+
+  // Price match
   const priceDiff = Math.abs(product.price - budget);
   if (priceDiff < budget * 0.2) {
-    reasons.push(`the price of $${product.price} is within your budget of $${budget}`);
+    reasons.push(`the price of ₹${product.price} is within your budget of ₹${budget}`);
   } else if (product.price < budget) {
-    reasons.push(`it's priced at $${product.price}, well under your budget of $${budget}`);
+    reasons.push(`it's priced at ₹${product.price}, well under your budget of ₹${budget}`);
   } else {
-    reasons.push(`while slightly above your $${budget} budget at $${product.price}, it offers excellent value`);
+    reasons.push(`while slightly above your ₹${budget} budget at ₹${product.price}, it offers excellent value`);
   }
 
-  // Brand match reason
-  const productBrand = product.brand || 'Unknown Brand';
-  const productCategory = product.category || 'Unknown Category';
-
-  if (brandPreference && brandPreference !== 'Any' && productBrand.toLowerCase() === brandPreference.toLowerCase()) {
-    reasons.push(`it's from ${productBrand}, your preferred brand`);
-  } else {
-    reasons.push(`${productBrand} is known for quality in the ${productCategory.toLowerCase()} category`);
+  // Brand match
+  if (brands && brands.length > 0 && brands.includes(product.brand)) {
+    reasons.push(`it's from ${product.brand}, one of your preferred brands`);
   }
 
-  // Feature match reason
-  if (product.featureType === featurePreference) {
-    reasons.push(`it excels in ${featurePreference} (${product.featureScore}/10 score), which is your top priority`);
-  } else {
-    reasons.push(`it offers strong ${product.featureType || 'features'} features (${product.featureScore || 0}/10 score)`);
+  // Feature match
+  if (featurePreference && product.featureType === featurePreference) {
+    reasons.push(`it excels in ${featurePreference}, which you prioritize`);
   }
 
-  // Rating reason
-  if (product.rating >= 4.5) {
-    reasons.push(`it has an excellent ${product.rating}/5 star rating from users`);
-  } else if (product.rating >= 4.0) {
-    reasons.push(`it has a solid ${product.rating}/5 star rating`);
+  // Rating
+  if (product.rating >= 4) {
+    reasons.push(`it has a high rating of ${product.rating}/5`);
   }
 
-  // Construct final explanation
-  const explanation = `The ${product.name} is recommended because ${reasons.join(', ')}. With a ${product.matchScore}% compatibility score, this product aligns well with your ${interests.join(', ')} interests and preferences.`;
+  const explanation = `${product.name} is recommended because ${reasons.slice(0, 3).join(', and ')}.`;
 
   return explanation;
 }

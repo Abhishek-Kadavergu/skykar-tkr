@@ -1,10 +1,13 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
+import { initializeFirebase } from "./config/firebase.js";
+import geminiService from "./services/geminiService.js";
 import explainRouter from "./routes/explain.js";
 import userPreferenceRouter from "./routes/userPreferenceRoutes.js";
 import recommendationRouter from './routes/recommendationRoutes.js';
+import userRouter from './routes/userRoutes.js';
+import aiRouter from './routes/aiRoutes.js';
 
 dotenv.config();
 
@@ -15,16 +18,18 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Database Connection
-mongoose
-  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/aalayax")
-  .then(() => console.log("MongoDB connected ✅"))
-  .catch((err) => console.error("MongoDB connection error:", err));
+// Initialize Firebase Admin SDK & Firestore
+initializeFirebase();
+
+// Initialize Gemini AI
+geminiService.initialize();
 
 // Routes
 app.use("/api/explain", explainRouter);
 app.use("/api/user-preferences", userPreferenceRouter);
 app.use("/api/recommendations", recommendationRouter);
+app.use("/api/user", userRouter);
+app.use("/api/ai", aiRouter);
 
 
 // Health check

@@ -12,7 +12,7 @@ export const products = [
     featureType: "Comfort",
     featureScore: 9,
     rating: 4.5,
-    image: "https://via.placeholder.com/300x300?text=Nike+Air+Max",
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop",
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const products = [
     featureType: "Running",
     featureScore: 9.5,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=Adidas+Ultraboost",
+    image: "https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=400&h=400&fit=crop",
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ export const products = [
     featureType: "Style",
     featureScore: 8,
     rating: 4.2,
-    image: "https://via.placeholder.com/300x300?text=Puma+RS-X3",
+    image: "https://images.unsplash.com/photo-1605348532760-6753d2c43329?w=400&h=400&fit=crop",
   },
   {
     id: 4,
@@ -45,7 +45,7 @@ export const products = [
     featureType: "Running",
     featureScore: 9.2,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=Asics+Gel-Kayano",
+    image: "https://images.unsplash.com/photo-1539185441755-769473a23570?w=400&h=400&fit=crop",
   },
   {
     id: 5,
@@ -56,7 +56,7 @@ export const products = [
     featureType: "Comfort",
     featureScore: 9,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=New+Balance+990",
+    image: "https://images.unsplash.com/photo-1448387473223-5c37445527e7?w=400&h=400&fit=crop",
   },
   {
     id: 6,
@@ -67,7 +67,7 @@ export const products = [
     featureType: "Casual",
     featureScore: 7.5,
     rating: 4.3,
-    image: "https://via.placeholder.com/300x300?text=Nike+Revolution",
+    image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop",
   },
   {
     id: 7,
@@ -78,7 +78,7 @@ export const products = [
     featureType: "Style",
     featureScore: 8.5,
     rating: 4.4,
-    image: "https://via.placeholder.com/300x300?text=Adidas+Stan+Smith",
+    image: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=400&h=400&fit=crop",
   },
   {
     id: 8,
@@ -89,7 +89,7 @@ export const products = [
     featureType: "Sports",
     featureScore: 8,
     rating: 4.3,
-    image: "https://via.placeholder.com/300x300?text=Puma+Future+Rider",
+    image: "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=400&h=400&fit=crop",
   },
   {
     id: 9,
@@ -100,7 +100,7 @@ export const products = [
     featureType: "Sports",
     featureScore: 8.8,
     rating: 4.5,
-    image: "https://via.placeholder.com/300x300?text=Asics+Noosa",
+    image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&h=400&fit=crop",
   },
   {
     id: 10,
@@ -111,7 +111,7 @@ export const products = [
     featureType: "Running",
     featureScore: 8.7,
     rating: 4.4,
-    image: "https://via.placeholder.com/300x300?text=New+Balance+Fresh",
+    image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=400&h=400&fit=crop",
   },
 
   // Tech Category (12 items)
@@ -124,7 +124,7 @@ export const products = [
     featureType: "Camera",
     featureScore: 9.5,
     rating: 4.8,
-    image: "https://via.placeholder.com/300x300?text=iPhone+15+Pro",
+    image: "https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?w=400&h=400&fit=crop",
   },
   {
     id: 12,
@@ -135,7 +135,7 @@ export const products = [
     featureType: "Display",
     featureScore: 9.2,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=Galaxy+S24",
+    image: "https://images.unsplash.com/photo-16105415295-d9bbf067e59c?w=400&h=400&fit=crop",
   },
   {
     id: 13,
@@ -146,7 +146,7 @@ export const products = [
     featureType: "Performance",
     featureScore: 9,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=OnePlus+12",
+    image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=400&fit=crop",
   },
   {
     id: 14,
@@ -157,7 +157,7 @@ export const products = [
     featureType: "Productivity",
     featureScore: 9.8,
     rating: 4.9,
-    image: "https://via.placeholder.com/300x300?text=MacBook+Pro",
+    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=400&fit=crop",
   },
   {
     id: 15,
@@ -168,7 +168,7 @@ export const products = [
     featureType: "Performance",
     featureScore: 8.9,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=Dell+XPS+13",
+    image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=400&fit=crop",
   },
   {
     id: 16,
@@ -179,7 +179,7 @@ export const products = [
     featureType: "Gaming",
     featureScore: 8.5,
     rating: 4.5,
-    image: "https://via.placeholder.com/300x300?text=HP+Pavilion",
+    image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=400&fit=crop",
   },
   {
     id: 17,
@@ -190,7 +190,7 @@ export const products = [
     featureType: "Productivity",
     featureScore: 9.2,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=ThinkPad+X1",
+    image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=400&fit=crop",
   },
   {
     id: 18,
@@ -201,7 +201,7 @@ export const products = [
     featureType: "Battery",
     featureScore: 8.7,
     rating: 4.5,
-    image: "https://via.placeholder.com/300x300?text=Galaxy+A55",
+    image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&h=400&fit=crop",
   },
   {
     id: 19,
@@ -212,7 +212,7 @@ export const products = [
     featureType: "Display",
     featureScore: 8.8,
     rating: 4.4,
-    image: "https://via.placeholder.com/300x300?text=OnePlus+Pad",
+    image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=400&h=400&fit=crop",
   },
   {
     id: 20,
@@ -223,7 +223,7 @@ export const products = [
     featureType: "Performance",
     featureScore: 9.1,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=iPad+Air",
+    image: "https://images.unsplash.com/photo-1561154464-82e9adf32764?w=400&h=400&fit=crop",
   },
   {
     id: 21,
@@ -234,7 +234,7 @@ export const products = [
     featureType: "Gaming",
     featureScore: 9,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=HP+Gaming",
+    image: "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=400&fit=crop",
   },
   {
     id: 22,
@@ -245,7 +245,7 @@ export const products = [
     featureType: "Gaming",
     featureScore: 9.3,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=Legion+Gaming",
+    image: "https://images.unsplash.com/photo-1625264785830-bc0274b2da70?w=400&h=400&fit=crop",
   },
 
   // Music Category (10 items)
@@ -258,7 +258,7 @@ export const products = [
     featureType: "Romantic",
     featureScore: 9,
     rating: 4.8,
-    image: "https://via.placeholder.com/300x300?text=Bollywood",
+    image: "https://images.unsplash.com/photo-1606220838315-056192d5e927?w=400&h=400&fit=crop",
   },
   {
     id: 24,
@@ -269,7 +269,7 @@ export const products = [
     featureType: "Party",
     featureScore: 9.5,
     rating: 4.9,
-    image: "https://via.placeholder.com/300x300?text=EDM+Mix",
+    image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=400&h=400&fit=crop",
   },
   {
     id: 25,
@@ -280,7 +280,7 @@ export const products = [
     featureType: "Focus",
     featureScore: 9.2,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=LoFi+Beats",
+    image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&h=400&fit=crop",
   },
   {
     id: 26,
@@ -291,7 +291,7 @@ export const products = [
     featureType: "Energetic",
     featureScore: 8.9,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=HipHop+Classics",
+    image: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=400&fit=crop",
   },
   {
     id: 27,
@@ -302,7 +302,7 @@ export const products = [
     featureType: "Relaxing",
     featureScore: 9.3,
     rating: 4.8,
-    image: "https://via.placeholder.com/300x300?text=Classical",
+    image: "https://images.unsplash.com/photo-1507838153414-b4b713384a76?w=400&h=400&fit=crop",
   },
   {
     id: 28,
@@ -313,7 +313,7 @@ export const products = [
     featureType: "Party",
     featureScore: 8.8,
     rating: 4.5,
-    image: "https://via.placeholder.com/300x300?text=Bollywood+Hits",
+    image: "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400&h=400&fit=crop",
   },
   {
     id: 29,
@@ -324,7 +324,7 @@ export const products = [
     featureType: "Relaxing",
     featureScore: 8.5,
     rating: 4.4,
-    image: "https://via.placeholder.com/300x300?text=EDM+Chill",
+    image: "https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=400&h=400&fit=crop",
   },
   {
     id: 30,
@@ -335,7 +335,7 @@ export const products = [
     featureType: "Relaxing",
     featureScore: 9,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=LoFi+Relax",
+    image: "https://images.unsplash.com/photo-1511376868136-742c0de8c9a8?w=400&h=400&fit=crop",
   },
   {
     id: 31,
@@ -346,7 +346,7 @@ export const products = [
     featureType: "Party",
     featureScore: 9,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=HipHop+Party",
+    image: "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=400&h=400&fit=crop",
   },
   {
     id: 32,
@@ -357,7 +357,7 @@ export const products = [
     featureType: "Romantic",
     featureScore: 9.4,
     rating: 4.8,
-    image: "https://via.placeholder.com/300x300?text=Classical+Romance",
+    image: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=400&h=400&fit=crop",
   },
 
   // Watches Category (12 items)
@@ -370,7 +370,7 @@ export const products = [
     featureType: "Smart",
     featureScore: 8.8,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=Titan+Smart",
+    image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&h=400&fit=crop",
   },
   {
     id: 34,
@@ -381,7 +381,7 @@ export const products = [
     featureType: "Smart",
     featureScore: 8.5,
     rating: 4.5,
-    image: "https://via.placeholder.com/300x300?text=Fossil+Gen+6",
+    image: "https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=400&h=400&fit=crop",
   },
   {
     id: 35,
@@ -392,7 +392,7 @@ export const products = [
     featureType: "Sport",
     featureScore: 9,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=Casio+G-Shock",
+    image: "https://images.unsplash.com/photo-1585123334904-845d60e97c9b?w=400&h=400&fit=crop",
   },
   {
     id: 36,
@@ -403,7 +403,7 @@ export const products = [
     featureType: "Smart",
     featureScore: 9.6,
     rating: 4.8,
-    image: "https://via.placeholder.com/300x300?text=Apple+Watch+9",
+    image: "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&h=400&fit=crop",
   },
   {
     id: 37,
@@ -414,7 +414,7 @@ export const products = [
     featureType: "Smart",
     featureScore: 9.2,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=Galaxy+Watch+6",
+    image: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&h=400&fit=crop",
   },
   {
     id: 38,
@@ -425,7 +425,7 @@ export const products = [
     featureType: "Luxury",
     featureScore: 8.7,
     rating: 4.5,
-    image: "https://via.placeholder.com/300x300?text=Titan+Raga",
+    image: "https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&h=400&fit=crop",
   },
   {
     id: 39,
@@ -436,7 +436,7 @@ export const products = [
     featureType: "Casual",
     featureScore: 8,
     rating: 4.3,
-    image: "https://via.placeholder.com/300x300?text=Fossil+Carlie",
+    image: "https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?w=400&h=400&fit=crop",
   },
   {
     id: 40,
@@ -447,7 +447,7 @@ export const products = [
     featureType: "Casual",
     featureScore: 7.8,
     rating: 4.4,
-    image: "https://via.placeholder.com/300x300?text=Casio+A1000",
+    image: "https://images.unsplash.com/photo-1622434641406-a158123450f9?w=400&h=400&fit=crop",
   },
   {
     id: 41,
@@ -458,7 +458,7 @@ export const products = [
     featureType: "Fitness",
     featureScore: 9.7,
     rating: 4.9,
-    image: "https://via.placeholder.com/300x300?text=Apple+Watch+Ultra",
+    image: "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=400&h=400&fit=crop",
   },
   {
     id: 42,
@@ -469,7 +469,7 @@ export const products = [
     featureType: "Luxury",
     featureScore: 9.1,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=Galaxy+Watch+Classic",
+    image: "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=400&h=400&fit=crop",
   },
   {
     id: 43,
@@ -480,7 +480,7 @@ export const products = [
     featureType: "Fitness",
     featureScore: 8.9,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=Titan+Fitness",
+    image: "https://images.unsplash.com/photo-1557438159-51eec7a6c9e8?w=400&h=400&fit=crop",
   },
   {
     id: 44,
@@ -491,7 +491,7 @@ export const products = [
     featureType: "Sport",
     featureScore: 8.6,
     rating: 4.5,
-    image: "https://via.placeholder.com/300x300?text=Fossil+Sport",
+    image: "https://images.unsplash.com/photo-1617625802912-cde586faf331?w=400&h=400&fit=crop",
   },
 
   // Perfumes Category (12 items)
@@ -504,7 +504,7 @@ export const products = [
     featureType: "Regular",
     featureScore: 9.5,
     rating: 4.9,
-    image: "https://via.placeholder.com/300x300?text=Dior+Sauvage",
+    image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop",
   },
   {
     id: 46,
@@ -515,7 +515,7 @@ export const products = [
     featureType: "Party",
     featureScore: 9,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=Gucci+Guilty",
+    image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=400&h=400&fit=crop",
   },
   {
     id: 47,
@@ -526,7 +526,7 @@ export const products = [
     featureType: "Sport",
     featureScore: 8.8,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=Armani+Code+Sport",
+    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=400&h=400&fit=crop",
   },
   {
     id: 48,
@@ -537,7 +537,7 @@ export const products = [
     featureType: "Fresh",
     featureScore: 8,
     rating: 4.3,
-    image: "https://via.placeholder.com/300x300?text=Zara+Vibrant",
+    image: "https://images.unsplash.com/photo-1528821128474-27f963b062bf?w=400&h=400&fit=crop",
   },
   {
     id: 49,
@@ -548,7 +548,7 @@ export const products = [
     featureType: "Woody",
     featureScore: 8.9,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=CK+Obsession",
+    image: "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=400&h=400&fit=crop",
   },
   {
     id: 50,
@@ -559,7 +559,7 @@ export const products = [
     featureType: "Floral",
     featureScore: 9.4,
     rating: 4.8,
-    image: "https://via.placeholder.com/300x300?text=Dior+Jadore",
+    image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=400&h=400&fit=crop",
   },
   {
     id: 51,
@@ -570,7 +570,7 @@ export const products = [
     featureType: "Floral",
     featureScore: 9.2,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=Gucci+Flora",
+    image: "https://images.unsplash.com/photo-1557170334-a9632e77c6e4?w=400&h=400&fit=crop",
   },
   {
     id: 52,
@@ -581,7 +581,7 @@ export const products = [
     featureType: "Regular",
     featureScore: 9.1,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=Armani+Si",
+    image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=400&h=400&fit=crop",
   },
   {
     id: 53,
@@ -592,7 +592,7 @@ export const products = [
     featureType: "Woody",
     featureScore: 7.8,
     rating: 4.2,
-    image: "https://via.placeholder.com/300x300?text=Zara+Woody",
+    image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=400&h=400&fit=crop",
   },
   {
     id: 54,
@@ -603,7 +603,7 @@ export const products = [
     featureType: "Floral",
     featureScore: 8.7,
     rating: 4.5,
-    image: "https://via.placeholder.com/300x300?text=CK+Eternity",
+    image: "https://images.unsplash.com/photo-1585933646112-9e36e4e3f675?w=400&h=400&fit=crop",
   },
   {
     id: 55,
@@ -614,7 +614,7 @@ export const products = [
     featureType: "Party",
     featureScore: 8.9,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=Dior+Poison",
+    image: "https://images.unsplash.com/photo-1547887537-6158d64c35b3?w=400&h=400&fit=crop",
   },
   {
     id: 56,
@@ -625,7 +625,7 @@ export const products = [
     featureType: "Fresh",
     featureScore: 9,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=Gucci+Bloom",
+    image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=400&h=400&fit=crop",
   },
 
   // TV Category (10 items)
@@ -638,7 +638,7 @@ export const products = [
     featureType: "4K",
     featureScore: 9.6,
     rating: 4.9,
-    image: "https://via.placeholder.com/300x300?text=Sony+Bravia+XR",
+    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=400&fit=crop",
   },
   {
     id: 58,
@@ -649,7 +649,7 @@ export const products = [
     featureType: "QLED",
     featureScore: 9.4,
     rating: 4.8,
-    image: "https://via.placeholder.com/300x300?text=Samsung+QN90C",
+    image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?w=400&h=400&fit=crop",
   },
   {
     id: 59,
@@ -660,7 +660,7 @@ export const products = [
     featureType: "OLED",
     featureScore: 9.8,
     rating: 4.9,
-    image: "https://via.placeholder.com/300x300?text=LG+OLED+G4",
+    image: "https://images.unsplash.com/photo-1593359863503-f598750a3c85?w=400&h=400&fit=crop",
   },
   {
     id: 60,
@@ -671,7 +671,7 @@ export const products = [
     featureType: "Smart",
     featureScore: 8.2,
     rating: 4.4,
-    image: "https://via.placeholder.com/300x300?text=Mi+QLED",
+    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=400&fit=crop",
   },
   {
     id: 61,
@@ -682,7 +682,7 @@ export const products = [
     featureType: "Android",
     featureScore: 8.5,
     rating: 4.5,
-    image: "https://via.placeholder.com/300x300?text=OnePlus+TV",
+    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=400&h=400&fit=crop",
   },
   {
     id: 62,
@@ -693,7 +693,7 @@ export const products = [
     featureType: "Smart",
     featureScore: 8.8,
     rating: 4.6,
-    image: "https://via.placeholder.com/300x300?text=Sony+Bravia+43",
+    image: "https://images.unsplash.com/photo-1567690187548-f07b1d7bf5a9?w=400&h=400&fit=crop",
   },
   {
     id: 63,
@@ -704,7 +704,7 @@ export const products = [
     featureType: "Android",
     featureScore: 7.5,
     rating: 4.2,
-    image: "https://via.placeholder.com/300x300?text=Samsung+43",
+    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?w=400&h=400&fit=crop",
   },
   {
     id: 64,
@@ -715,7 +715,7 @@ export const products = [
     featureType: "Smart",
     featureScore: 9.1,
     rating: 4.7,
-    image: "https://via.placeholder.com/300x300?text=LG+Smart+TV",
+    image: "https://images.unsplash.com/photo-1601944177325-f8867652837f?w=400&h=400&fit=crop",
   },
   {
     id: 65,
@@ -726,7 +726,7 @@ export const products = [
     featureType: "4K",
     featureScore: 8.6,
     rating: 4.5,
-    image: "https://via.placeholder.com/300x300?text=Mi+4K+TV",
+    image: "https://images.unsplash.com/photo-1593359863503-f598750a3c85?w=400&h=400&fit=crop",
   },
   {
     id: 66,
@@ -737,7 +737,7 @@ export const products = [
     featureType: "Smart",
     featureScore: 8,
     rating: 4.3,
-    image: "https://via.placeholder.com/300x300?text=OnePlus+43",
+    image: "https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=400&h=400&fit=crop",
   },
 ];
 

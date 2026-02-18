@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaSearch, FaStar, FaChartLine, FaShieldAlt, FaTshirt, FaLaptop, FaMusic, FaPalette } from 'react-icons/fa';
+import { FaSearch, FaStar, FaChartLine, FaShieldAlt, FaUtensils, FaFilm, FaMusic, FaShoppingBag, FaLaptop, FaClock, FaVial, FaTv } from 'react-icons/fa';
 
 function LandingPage() {
   return (
@@ -14,8 +14,8 @@ function LandingPage() {
             AI-Powered Virtual Assistance & User Experience Engine
           </p>
           <p className="text-lg text-slate-500 mb-12 max-w-2xl mx-auto">
-            Get personalized product recommendations tailored to your preferences, budget, and lifestyle.
-            Our intelligent recommendation engine finds the perfect match for you.
+            Get personalized recommendations for restaurants, movies, music, shoes, tech, watches, perfumes, and TV devices.
+            Our intelligent AI engine finds the perfect match for you.
           </p>
           <Link
             to="/login"
@@ -73,10 +73,31 @@ function LandingPage() {
           <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">
             Explore Categories
           </h2>
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer border border-gray-200">
               <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <FaTshirt className="text-3xl text-slate-700" />
+                <FaUtensils className="text-3xl text-slate-700" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900">Restaurants</h3>
+              <p className="text-slate-600 text-sm mt-2">Location-based dining</p>
+            </div>
+            <div className="text-center p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer border border-gray-200">
+              <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <FaFilm className="text-3xl text-slate-700" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900">Movies & TV</h3>
+              <p className="text-slate-600 text-sm mt-2">Real-time streaming data</p>
+            </div>
+            <div className="text-center p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer border border-gray-200">
+              <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <FaMusic className="text-3xl text-slate-700" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900">Music Albums</h3>
+              <p className="text-slate-600 text-sm mt-2">Bollywood, EDM, LoFi & more</p>
+            </div>
+            <div className="text-center p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer border border-gray-200">
+              <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <FaShoppingBag className="text-3xl text-slate-700" />
               </div>
               <h3 className="text-xl font-bold text-slate-900">Shoes</h3>
               <p className="text-slate-600 text-sm mt-2">Nike, Adidas, Puma & more</p>
@@ -86,21 +107,28 @@ function LandingPage() {
                 <FaLaptop className="text-3xl text-slate-700" />
               </div>
               <h3 className="text-xl font-bold text-slate-900">Tech</h3>
-              <p className="text-slate-600 text-sm mt-2">Gadgets, Audio & Accessories</p>
+              <p className="text-slate-600 text-sm mt-2">Smartphones & Laptops</p>
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer border border-gray-200">
               <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <FaMusic className="text-3xl text-slate-700" />
+                <FaClock className="text-3xl text-slate-700" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900">Music</h3>
-              <p className="text-slate-600 text-sm mt-2">Instruments & Equipment</p>
+              <h3 className="text-xl font-bold text-slate-900">Watches</h3>
+              <p className="text-slate-600 text-sm mt-2">Smart & Luxury watches</p>
             </div>
             <div className="text-center p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer border border-gray-200">
               <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <FaPalette className="text-3xl text-slate-700" />
+                <FaVial className="text-3xl text-slate-700" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900">Hobbies</h3>
-              <p className="text-slate-600 text-sm mt-2">Drones, Cameras & Art</p>
+              <h3 className="text-xl font-bold text-slate-900">Perfumes</h3>
+              <p className="text-slate-600 text-sm mt-2">Dior, Gucci, Armani & more</p>
+            </div>
+            <div className="text-center p-6 bg-gray-50 rounded-lg hover:shadow-md transition-shadow cursor-pointer border border-gray-200">
+              <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mx-auto mb-4 shadow-sm">
+                <FaTv className="text-3xl text-slate-700" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900">TV Devices</h3>
+              <p className="text-slate-600 text-sm mt-2">Sony, Samsung, LG & more</p>
             </div>
           </div>
         </div>

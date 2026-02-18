@@ -4,3 +4,6 @@ node_modules
 dist
 build
 .DS_Store
+
+# Firebase Service Account Key - NEVER COMMIT
+serviceAccountKey.json
